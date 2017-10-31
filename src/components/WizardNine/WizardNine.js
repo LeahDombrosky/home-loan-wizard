@@ -1,5 +1,7 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateAddress1, updateAddress2, updateAddress3 } from '../../ducks/reducer';
 
 class WizardNine extends Component {
 
@@ -22,4 +24,14 @@ class WizardNine extends Component {
     }
 }
 
-export default WizardNine;
+function mapStateToProps( state ) {
+    const { addressOne, addressTwo, addressThree } = state;
+  
+    return {
+      addressOne,
+      addressTwo,
+      addressThree
+    };
+  }
+  
+  export default connect( mapStateToProps, { updateAddress1, updateAddress2, updateAddress3 } )( WizardNine );

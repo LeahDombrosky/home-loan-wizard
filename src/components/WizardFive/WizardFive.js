@@ -1,5 +1,7 @@
 import React,  { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { updateAgent } from '../../ducks/reducer';
+import { connect } from 'react-redux';
 
 class WizardFive extends Component {
 
@@ -19,4 +21,13 @@ class WizardFive extends Component {
     }
 }
 
-export default WizardFive;
+function mapStateToProps( state ) {
+    const { realEstateAgent } = state;
+  
+    return {
+        realEstateAgent
+    };
+  }
+  
+  export default connect( mapStateToProps, { updateAgent } )( WizardFive ); 
+
